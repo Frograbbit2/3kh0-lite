@@ -63,15 +63,18 @@ document.getElementById("create").onclick = function () {
     url.value = `https://${url.value.split("http://").pop()}`;
   }
   const win = window.open();
-  win.document.body.style.margin = "0";
-  win.document.body.style.height = "100vh";
-  const iframe = win.document.createElement("iframe");
-  iframe.style.border = "none";
-  iframe.style.width = "100%";
-  iframe.style.height = "100%";
-  iframe.style.margin = "0";
-  iframe.referrerpolicy = "no-referrer";
-  iframe.allow = "fullscreen";
-  iframe.src = url.value;
-  win.document.body.appendChild(iframe);
+    win.document.body.style.margin = "0";
+    win.document.body.style.height = "100vh";
+    const iframe = win.document.createElement("iframe");
+    iframe.style.border = "none";
+    iframe.style.width = "100%";
+    iframe.style.height = "100%";
+    iframe.style.margin = "0";
+    iframe.referrerPolicy = "no-referrer";
+    iframe.allow = "fullscreen";
+    iframe.src = url.value; // Set the src to about:blank
+    win.document.body.appendChild(iframe);
+
+    // Navigate to about:blank#haha within the iframe
+    iframe.contentWindow.location.href = "about:blank#haha";
 };
